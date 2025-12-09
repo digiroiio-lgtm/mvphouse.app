@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# OS and IDE files
+.DS_Store
+.env
+
+# Build output
+.next/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Vercel
+.vercel/
