@@ -315,7 +315,35 @@ const FeaturedApps = ({ apps }: { apps: App[] }) => (
 );
 
 const AppGallery = ({ apps }: { apps: App[] }) => (
-  <section className="bg-white" id="apps" aria-labelledby="apps-heading">
+  <section className="bg-white relative" id="apps" aria-labelledby="apps-heading">
+    <div className="absolute inset-0 flex justify-center -z-10 opacity-[0.08] pointer-events-none">
+      {/* Infinity Flow Loop SVG Animation */}
+      <svg width="600" height="180" viewBox="0 0 600 180" fill="none" className="infinity-flow-loop">
+        <defs>
+          <linearGradient id="infinityGradient" x1="0" y1="0" x2="600" y2="180" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#3B82F6"/>
+            <stop offset="0.33" stopColor="#06B6D4"/>
+            <stop offset="0.66" stopColor="#8B5CF6"/>
+            <stop offset="1" stopColor="#EC4899"/>
+          </linearGradient>
+        </defs>
+        <path
+          d="M100,90 C100,40 200,40 200,90 C200,140 100,140 100,90
+             M500,90 C500,40 400,40 400,90 C400,140 500,140 500,90
+             M200,90 C200,40 400,40 400,90 C400,140 200,140 200,90"
+          stroke="url(#infinityGradient)"
+          strokeWidth={4}
+          strokeLinecap="round"
+          fill="none"
+          style={{
+            strokeDasharray: 1200,
+            strokeDashoffset: 1200,
+            opacity: 0.08,
+            animation: "drawInfinity 2.5s linear infinite"
+          }}
+        />
+      </svg>
+    </div>
     <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-20">
       <div className="mb-12 text-center">
         <h2 className="section-heading" id="apps-heading">
