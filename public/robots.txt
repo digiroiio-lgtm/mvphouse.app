@@ -1,0 +1,51 @@
+# ==============================
+# MVP HOUSE LTD — robots.txt
+# Advanced Security Mode
+# Last Updated: 01.01.2026
+# ==============================
+
+User-agent: *
+# Allow main content
+Allow: /
+
+# Disallow sensitive, internal or system paths
+Disallow: /api/
+Disallow: /internal/
+Disallow: /server/
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /preview/
+
+# Disallow Next.js internal build assets
+Disallow: /_next/
+Disallow: /next/
+Disallow: /static/
+
+# Disallow indexing URLs containing security-related query params
+Disallow: /*?token=
+Disallow: /*?auth=
+Disallow: /*?key=
+Disallow: /*?api_key=
+Disallow: /*?secret=
+Disallow: /*?session=
+Disallow: /*?access_token=
+Disallow: /*?refresh_token=
+Disallow: /*?billing_session=
+Disallow: /*?checkout_session=
+
+# Allow required legal pages for Stripe + SEO
+Allow: /terms.html
+Allow: /privacy.html
+Allow: /refund-policy.html
+Allow: /cookies.html
+Allow: /billing.html
+Allow: /acceptable-use.html
+Allow: /dpa.html
+Allow: /subprocessors.html
+Allow: /security.html
+Allow: /fair-use.html
+Allow: /ai-policy.html
+Allow: /dmca.html
+
+# XML Sitemap
+Sitemap: https://mvphouse.app/sitemap.xml

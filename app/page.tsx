@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { LegalLink } from "../lib/legal-links";
+import { legalLinks } from "../lib/legal-links";
 
 type App = {
   name: string;
@@ -101,20 +103,18 @@ const navLinks = [
   { label: "Contact", href: "#footer" },
 ];
 
-const legalLinks = [
-  { label: "Terms & Conditions", href: "https://mvphouse.app/terms" },
-  { label: "Privacy Policy", href: "https://mvphouse.app/privacy" },
-  { label: "Refund & Cancellation Policy", href: "https://mvphouse.app/refund-policy" },
-  { label: "Cookie Policy", href: "https://mvphouse.app/cookies" },
-  { label: "Billing & Subscription Policy", href: "https://mvphouse.app/billing" },
-  { label: "Acceptable Use Policy (AUP)", href: "https://mvphouse.app/acceptable-use" },
-  { label: "Data Processing Agreement (DPA)", href: "https://mvphouse.app/dpa" },
-  { label: "Subprocessors List", href: "https://mvphouse.app/subprocessors" },
-  { label: "Security Policy", href: "https://mvphouse.app/security" },
-  { label: "Fair Use Policy (FUP)", href: "https://mvphouse.app/fair-use" },
-  { label: "AI Use & Disclosure Policy", href: "https://mvphouse.app/ai-policy" },
-  { label: "Copyright & DMCA Policy", href: "https://mvphouse.app/dmca" },
+const productLinks = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/#apps" },
+  { label: "Docs", href: "/#how" },
+  { label: "Inside MVP House", href: "/#inside" },
 ];
+
+const supportLinks = [
+  { label: "Email Support", href: "mailto:support@mvphouse.app" },
+];
+
+type FooterLink = LegalLink;
 
 const heroPreviewCards = [
   { title: "Ops Board", tag: "Automation" },
@@ -476,49 +476,72 @@ const Philosophy = () => (
   </section>
 );
 
-const SiteFooter = () => (
-  <footer
-    id="footer"
-    className="border-t border-[#EDEDED] bg-[#FAFAFA] text-sm text-[rgba(0,0,0,0.7)]"
-  >
-    <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:py-12">
-      <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-lg font-semibold text-gray-900">MVP House</p>
-          <p className="mt-2 max-w-sm text-sm">Micro-SaaS built inside MVP Studio.</p>
-        </div>
-        <div className="flex flex-col gap-3 text-sm sm:text-right">
-          <div className="flex flex-wrap gap-4 font-semibold text-gray-600 sm:justify-end">
-            {navLinks.map((link) => (
-              <Link key={link.label} href={link.href} className="transition hover:text-gray-900">
-                {link.label}
-              </Link>
-            ))}
+const SiteFooter = () => {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer id="footer" className="bg-[#050505] text-white">
+      <div className="mx-auto max-w-6xl px-6 py-14">
+        <div className="flex flex-col gap-10 border-b border-white/10 pb-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-sm space-y-3">
+            <div className="text-xl font-semibold tracking-wider">MVP HOUSE</div>
+            <p className="text-sm text-white/70">
+              An ecosystem of AI-first micro-SaaS products built in the UK.
+            </p>
           </div>
-          <p className="text-gray-500">support@mvphouse.app</p>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <FooterColumn title="Product" links={productLinks} />
+            <FooterColumn title="Support" links={supportLinks} />
+            <FooterColumn title="Legal & Compliance" links={legalLinks} />
+            <CompanyColumn title="Operated By" />
+          </div>
+        </div>
+        <div className="py-6 text-center text-sm text-white/70">
+          © {currentYear} MVP HOUSE LTD. All rights reserved.
         </div>
       </div>
-      <div className="rounded-2xl border border-[#E3E3E3] bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-          MVP HOUSE LTD
-        </p>
-        <ul className="mt-4 grid gap-3 text-sm text-[rgba(0,0,0,0.7)] sm:grid-cols-2 lg:grid-cols-3">
-          {legalLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="flex items-center gap-2 rounded-lg border border-transparent px-2 py-1 transition hover:border-[#EAEAEA] hover:text-gray-900"
-              >
-                <span className="text-xs font-semibold text-[#0066FF]">●</span>
-                <span>{link.label}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-    <div className="border-t border-[#EDEDED] py-4 text-center text-xs text-gray-500">
-      © 2025 MVP House
-    </div>
-  </footer>
+    </footer>
+  );
+};
+
+const FooterColumn = ({ title, links }: { title: string; links: FooterLink[] }) => (
+  <div>
+    <h4 className="text-sm font-semibold uppercase tracking-wide text-white/80">{title}</h4>
+    <ul className="mt-4 space-y-2 text-sm text-white/70">
+      {links.map((link) => (
+        <li key={link.label}>
+          {link.href.startsWith("http") || link.href.startsWith("mailto") ? (
+            <a href={link.href} className="transition hover:text-white">
+              {link.label}
+            </a>
+          ) : (
+            <Link href={link.href} className="transition hover:text-white">
+              {link.label}
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const CompanyColumn = ({ title = "Company" }: { title?: string }) => (
+  <div>
+    <h4 className="text-sm font-semibold uppercase tracking-wide text-white/80">{title}</h4>
+    <ul className="mt-4 space-y-1 text-sm text-white/70">
+      <li>MVP HOUSE LTD</li>
+      <li>71–75 Shelton Street</li>
+      <li>Covent Garden</li>
+      <li>London, WC2H 9JQ</li>
+      <li>United Kingdom</li>
+      <li className="pt-2">
+        <strong>Support:</strong>{" "}
+        <a href="mailto:support@mvphouse.app" className="hover:text-white">
+          support@mvphouse.app
+        </a>
+      </li>
+      <li className="text-xs text-white/60">Phone support provided for B2B customers only.</li>
+      <li className="text-xs text-white/60">Governing law: England &amp; Wales</li>
+    </ul>
+  </div>
 );
