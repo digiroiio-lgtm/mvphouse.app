@@ -101,6 +101,21 @@ const navLinks = [
   { label: "Contact", href: "#footer" },
 ];
 
+const legalLinks = [
+  { label: "Terms & Conditions", href: "https://mvphouse.app/terms" },
+  { label: "Privacy Policy", href: "https://mvphouse.app/privacy" },
+  { label: "Refund & Cancellation Policy", href: "https://mvphouse.app/refund-policy" },
+  { label: "Cookie Policy", href: "https://mvphouse.app/cookies" },
+  { label: "Billing & Subscription Policy", href: "https://mvphouse.app/billing" },
+  { label: "Acceptable Use Policy (AUP)", href: "https://mvphouse.app/acceptable-use" },
+  { label: "Data Processing Agreement (DPA)", href: "https://mvphouse.app/dpa" },
+  { label: "Subprocessors List", href: "https://mvphouse.app/subprocessors" },
+  { label: "Security Policy", href: "https://mvphouse.app/security" },
+  { label: "Fair Use Policy (FUP)", href: "https://mvphouse.app/fair-use" },
+  { label: "AI Use & Disclosure Policy", href: "https://mvphouse.app/ai-policy" },
+  { label: "Copyright & DMCA Policy", href: "https://mvphouse.app/dmca" },
+];
+
 const heroPreviewCards = [
   { title: "Ops Board", tag: "Automation" },
   { title: "Listings IQ", tag: "SEO" },
@@ -466,20 +481,40 @@ const SiteFooter = () => (
     id="footer"
     className="border-t border-[#EDEDED] bg-[#FAFAFA] text-sm text-[rgba(0,0,0,0.7)]"
   >
-    <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:flex-row sm:justify-between sm:py-12">
-      <div>
-        <p className="text-lg font-semibold text-gray-900">MVP House</p>
-        <p className="mt-2 max-w-sm text-sm">Micro-SaaS built inside MVP Studio.</p>
-      </div>
-      <div className="flex flex-col gap-3 text-sm sm:text-right">
-        <div className="flex flex-wrap gap-4 font-semibold text-gray-600 sm:justify-end">
-          {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} className="transition hover:text-gray-900">
-              {link.label}
-            </Link>
-          ))}
+    <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:py-12">
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="text-lg font-semibold text-gray-900">MVP House</p>
+          <p className="mt-2 max-w-sm text-sm">Micro-SaaS built inside MVP Studio.</p>
         </div>
-        <p className="text-gray-500">support@mvphouse.app</p>
+        <div className="flex flex-col gap-3 text-sm sm:text-right">
+          <div className="flex flex-wrap gap-4 font-semibold text-gray-600 sm:justify-end">
+            {navLinks.map((link) => (
+              <Link key={link.label} href={link.href} className="transition hover:text-gray-900">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <p className="text-gray-500">support@mvphouse.app</p>
+        </div>
+      </div>
+      <div className="rounded-2xl border border-[#E3E3E3] bg-white p-6 shadow-sm">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+          MVP HOUSE LTD — Legal URLs (12 Belge)
+        </p>
+        <ul className="mt-4 grid gap-3 text-sm text-[rgba(0,0,0,0.7)] sm:grid-cols-2 lg:grid-cols-3">
+          {legalLinks.map((link) => (
+            <li key={link.label}>
+              <Link
+                href={link.href}
+                className="flex items-center gap-2 rounded-lg border border-transparent px-2 py-1 transition hover:border-[#EAEAEA] hover:text-gray-900"
+              >
+                <span className="text-xs font-semibold text-[#0066FF]">●</span>
+                <span>{link.label}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
     <div className="border-t border-[#EDEDED] py-4 text-center text-xs text-gray-500">
