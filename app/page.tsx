@@ -500,7 +500,7 @@ const SiteFooter = () => (
       </div>
       <div className="rounded-2xl border border-[#E3E3E3] bg-white p-6 shadow-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-          MVP HOUSE LTD — Legal URLs (12 Belge)
+          MVP HOUSE LTD
         </p>
         <ul className="mt-4 grid gap-3 text-sm text-[rgba(0,0,0,0.7)] sm:grid-cols-2 lg:grid-cols-3">
           {legalLinks.map((link) => (
