@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+a {
+  color: inherit;
+}
+
+.section-heading {
+  @apply text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight;
+}
+
+.section-subheading {
+  @apply text-base sm:text-lg text-[rgba(0,0,0,0.6)];
+}
