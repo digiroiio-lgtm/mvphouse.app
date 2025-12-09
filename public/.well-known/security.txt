@@ -1,0 +1,11 @@
+# MVP HOUSE LTD Security Disclosure Policy
+# Last Updated: 01.01.2026
+
+Contact: mailto:support@mvphouse.app
+Policy: https://mvphouse.app/security.html
+Preferred-Languages: en
+Canonical: https://mvphouse.app/.well-known/security.txt
+Encryption: https://keys.openpgp.org/
+
+Acknowledgments: We appreciate responsible disclosure from security researchers.
+Expires: 2027-01-01T00:00:00.000Z
