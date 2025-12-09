@@ -23,3 +23,15 @@ a {
 .section-subheading {
   @apply text-base sm:text-lg text-[rgba(0,0,0,0.6)];
 }
+
+@keyframes drawInfinity {
+  0% { stroke-dashoffset: 1200; }
+  60% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1200; }
+}
+.infinity-flow-loop path {
+  opacity: 0.08;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawInfinity 2.5s linear infinite;
+}
