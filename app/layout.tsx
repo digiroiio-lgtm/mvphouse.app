@@ -98,6 +98,8 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-[rgba(0,0,0,0.9)] antialiased">
         {children}
+        {/* Cookie Consent Banner */}
+        {typeof window !== "undefined" && require('./components/CookieBanner').default()}
       </body>
     </html>
   );
